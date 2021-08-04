@@ -14,7 +14,7 @@ test-results/
 # Mac bundle stuff
 *.dmg
 *.app
-
+*personalinfo.txt
 # content below from: https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
 # General
 .DS_Store
