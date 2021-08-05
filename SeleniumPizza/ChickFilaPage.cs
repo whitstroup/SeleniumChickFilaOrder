@@ -18,6 +18,11 @@ namespace SeleniumPizza
         private IWebElement cookies => driver.FindElement(By.Id("onetrust-accept-btn-handler"));
         private IWebElement orderFood => driver.FindElement(By.LinkText("Order food"));
         private IWebElement PickUp => driver.FindElement(By.CssSelector("li:nth-child(1) > a > div"));
+        private IWebElement locations => driver.FindElement(By.Id("input-1"));
+        private IWebElement FindLocation => driver.FindElement(By.CssSelector(".sc-ksluID"));
+        private IWebElement ChooseLocation => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-ksluID > span"));
+        private IWebElement carryOut => driver.FindElement(By.CssSelector(".sc-jVBfSZ:nth-child(2) .sc-jrsJWt:nth-child(2)"));
+        private IWebElement meals => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
 
         public void OrderChicken()
         {
@@ -38,29 +43,29 @@ namespace SeleniumPizza
             orderFood.Click();
             Thread.Sleep(2000);
 
-            IWebElement PickUp = driver.FindElement(By.CssSelector("li:nth-child(1) > a > div"));
+
             PickUp.Click();
             Thread.Sleep(5000);
 
-            IWebElement locations = driver.FindElement(By.Id("input-1"));
+            
             locations.Click();
             locations.SendKeys("35226");
             Thread.Sleep(5000);
 
-            IWebElement FindLocation = driver.FindElement(By.CssSelector(".sc-ksluID"));
+            
             FindLocation.Click();
 
             Thread.Sleep(5000);
 
-            IWebElement ChooseLocation = driver.FindElement(By.CssSelector("li:nth-child(2) .sc-ksluID > span"));
+            
             ChooseLocation.Click();
             Thread.Sleep(3000);
 
-            IWebElement carryOut = driver.FindElement(By.CssSelector(".sc-jVBfSZ:nth-child(2) .sc-jrsJWt:nth-child(2)"));
+            
             carryOut.Click();
             Thread.Sleep(3000);
 
-            IWebElement meals = driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
+            
             meals.Click();
             Thread.Sleep(3000);
 
