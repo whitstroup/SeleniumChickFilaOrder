@@ -16,18 +16,10 @@ namespace SeleniumChickfila
             int counter = 0;
             string line;
 
-            //// Read the file and display it line by line.  
-            //System.IO.StreamReader file =
-            //    new System.IO.StreamReader(@"personalinfo.txt");
-            //while ((line = file.ReadLine()) != null)
-            //{
-            //    System.Console.WriteLine(line);
-            //    counter++;
-            //}
+            
+            var lines = File.ReadLines("personalinfo.txt").ToArray();
 
-            System.Collections.Generic.IEnumerable<String> reading = File.ReadLines("personalinfo.txt");
-
-            string[] lines = reading.ToArray();
+           
             foreach(var l in lines)
             {
                 Console.WriteLine(l);
@@ -68,47 +60,47 @@ namespace SeleniumChickfila
 
             IWebElement ChooseLocation = driver.FindElement(By.CssSelector("li:nth-child(2) .sc-ksluID > span"));
             ChooseLocation.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement carryOut = driver.FindElement(By.CssSelector(".sc-jVBfSZ:nth-child(2) .sc-jrsJWt:nth-child(2)"));
             carryOut.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement meals = driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
             meals.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement deluxeCombo = driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
             deluxeCombo.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement chooseSide = driver.FindElement(By.CssSelector(".sc-ksluID"));
             chooseSide.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement WaffleFries = driver.FindElement(By.CssSelector("li:nth-child(1) > .sc-fFSPTT"));
            
             WaffleFries.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement Choosebeverage = driver.FindElement(By.CssSelector(".sc-ksluID"));
             
             Choosebeverage.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement lemonade = driver.FindElement(By.CssSelector(".sc-jhKdTJ:nth-child(3) .sc-bMHtUk"));
             lemonade.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement reviewMeal = driver.FindElement(By.CssSelector(".sc-ksluID"));
             reviewMeal.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement addOrder = driver.FindElement(By.CssSelector(".sc-ksluID"));
             Actions actions = new Actions(driver);
             actions.MoveToElement(addOrder);
             addOrder.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
 
             IWebElement viewBag = driver.FindElement(By.CssSelector(".sc-biHcxt"));
             viewBag.Click();
