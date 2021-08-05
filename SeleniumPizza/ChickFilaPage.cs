@@ -1,46 +1,40 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
-using Xunit;
 
-namespace SeleniumChickfila
+namespace SeleniumPizza
 {
-    class MainClass
+    public class ChickFilaPage
     {
-        public static void Main(string[] args)
+        public ChickFilaPage(ChromeDriver driver)
         {
-            int counter = 0;
-            string line;
+            this.driver = driver;
+        }
+
+        private  readonly ChromeDriver driver;
+
+        private IWebElement cookies => driver.FindElement(By.Id("onetrust-accept-btn-handler"));
+        private IWebElement orderFood => driver.FindElement(By.LinkText("Order food"));
+        private IWebElement PickUp => driver.FindElement(By.CssSelector("li:nth-child(1) > a > div"));
+
+        public void OrderChicken()
+        {
+            var personal = new PersonalInfo("personalinfo.txt");
 
             
-            var lines = File.ReadLines("personalinfo.txt").ToArray();
-
-           
-            foreach(var l in lines)
-            {
-                Console.WriteLine(l);
-            }
-
-
-
-           
-
-            var driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
 
             driver.Navigate().GoToUrl("https://www.chick-fil-a.com/");
 
             Thread.Sleep(2000);
 
-            IWebElement cookies = driver.FindElement(By.Id("onetrust-accept-btn-handler"));
+           
             cookies.Click();
             Thread.Sleep(3000);
 
-            IWebElement orderFood = driver.FindElement(By.LinkText("Order food"));
+            
             orderFood.Click();
             Thread.Sleep(2000);
 
@@ -55,7 +49,7 @@ namespace SeleniumChickfila
 
             IWebElement FindLocation = driver.FindElement(By.CssSelector(".sc-ksluID"));
             FindLocation.Click();
-            
+
             Thread.Sleep(5000);
 
             IWebElement ChooseLocation = driver.FindElement(By.CssSelector("li:nth-child(2) .sc-ksluID > span"));
@@ -79,12 +73,12 @@ namespace SeleniumChickfila
             Thread.Sleep(3000);
 
             IWebElement WaffleFries = driver.FindElement(By.CssSelector("li:nth-child(1) > .sc-fFSPTT"));
-           
+
             WaffleFries.Click();
             Thread.Sleep(3000);
 
             IWebElement Choosebeverage = driver.FindElement(By.CssSelector(".sc-ksluID"));
-            
+
             Choosebeverage.Click();
             Thread.Sleep(3000);
 
@@ -118,37 +112,33 @@ namespace SeleniumChickfila
 
             IWebElement firstName = driver.FindElement(By.Id("input-20"));
             firstName.Click();
-            firstName.SendKeys(lines[0]);
+            firstName.SendKeys(personal.Name);
             Thread.Sleep(3000);
 
             IWebElement lastName = driver.FindElement(By.CssSelector("#input-21"));
             lastName.Click();
-            lastName.SendKeys(lines[1]);
+            lastName.SendKeys(personal.LastName);
             Thread.Sleep(3000);
 
             IWebElement phone = driver.FindElement(By.CssSelector("#input-22"));
             phone.Click();
-            phone.SendKeys(lines[2]);
+            phone.SendKeys(personal.Phone);
             Thread.Sleep(3000);
 
             IWebElement email = driver.FindElement(By.CssSelector("#input-23"));
             email.Click();
-            email.SendKeys(lines[3]);
+            email.SendKeys(personal.Email);
             Thread.Sleep(3000);
 
             IWebElement emailConfirmed = driver.FindElement(By.CssSelector("#input-24"));
             emailConfirmed.Click();
-            emailConfirmed.SendKeys(lines[3]);
+            emailConfirmed.SendKeys(personal.Email);
             Thread.Sleep(3000);
 
 
 
             driver.Quit();
 
-
-
-
-            //Assert.AreEqual("YOUR CART", yourCartHeader.Text);
         }
     }
 }
