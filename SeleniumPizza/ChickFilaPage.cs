@@ -44,7 +44,10 @@ namespace SeleniumPizza
         private IWebElement payment => driver.FindElement(By.CssSelector(".sc-ksluID"));
         private IWebElement SignIn => driver.FindElement(By.CssSelector(".sc-iwajpm > .bovdhG"));
         private IWebElement userName => driver.FindElement(By.Name("pf.username"));
-        private IWebElement passPhrase => driver.FindElement(By.Name("pf.ok"));
+        private IWebElement userPassPhrase => driver.FindElement(By.Name("pf.pass"));
+        private IWebElement userOk => driver.FindElement(By.Name("pf.ok"));
+
+        private IWebElement selectCard => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-jrsJWt"));
 
 
 
@@ -172,9 +175,19 @@ namespace SeleniumPizza
 
             userName.Click();
             userName.SendKeys(personal.Email);
+            Thread.Sleep(3000);
 
-            passPhrase.Click();
-            passPhrase.SendKeys(personal.passPhrase);
+            userPassPhrase.Click();
+            userPassPhrase.SendKeys(personal.passPhrase);
+            Thread.Sleep(3000);
+
+            userOk.Click();
+            Thread.Sleep(5000);
+
+            selectCard.Click();
+            Thread.Sleep(3000);
+
+
 
             driver.Quit();
 

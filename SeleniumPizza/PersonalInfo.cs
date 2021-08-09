@@ -13,6 +13,7 @@ namespace SeleniumPizza
             LastName = lines[1];
             Phone = lines[2];
             Email = lines[3];
+            passPhrase = lines[4];
 
         }
 
@@ -20,6 +21,8 @@ namespace SeleniumPizza
         public string LastName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string passPhrase { get; set; }
+
 
     }
 }

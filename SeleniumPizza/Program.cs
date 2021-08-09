@@ -28,9 +28,9 @@ namespace SeleniumChickfila
             chickPage.OrderChicken();
 
 
-
+            //closes the browser and ends the session.
             driver.Quit();
-            driver.Close();
+            
 
             
         }
