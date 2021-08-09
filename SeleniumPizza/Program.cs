@@ -14,9 +14,13 @@ namespace SeleniumChickfila
     {
         public static void Main(string[] args)
         {
-
+            //create new driver and set the start url
             var driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("https://www.chick-fil-a.com/");
+
+
+            //create new instance of the chick fila page
             var chickPage = new ChickFilaPage(driver);
 
 
@@ -24,7 +28,9 @@ namespace SeleniumChickfila
             chickPage.OrderChicken();
 
 
+
             driver.Quit();
+            driver.Close();
 
             
         }

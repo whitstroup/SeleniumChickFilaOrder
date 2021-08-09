@@ -15,13 +15,17 @@ namespace SeleniumPizza
 
         private  readonly ChromeDriver driver;
 
+        //Iweb elements seperated from the methods so they can be reused.
+        //these fields use => to make them a property.
         private IWebElement cookies => driver.FindElement(By.Id("onetrust-accept-btn-handler"));
         private IWebElement orderFood => driver.FindElement(By.LinkText("Order food"));
         private IWebElement PickUp => driver.FindElement(By.CssSelector("li:nth-child(1) > a > div"));
         private IWebElement locations => driver.FindElement(By.Id("input-1"));
         private IWebElement FindLocation => driver.FindElement(By.CssSelector(".sc-ksluID"));
-        private IWebElement ChooseLocation => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-ksluID > span"));
+        private IWebElement ChooseLocation => driver.FindElement(By.CssSelector("li:nth-child(3) .sc-ksluID > span"));
         private IWebElement carryOut => driver.FindElement(By.CssSelector(".sc-jVBfSZ:nth-child(2) .sc-jrsJWt:nth-child(2)"));
+        //drive through .sc-fzJAIQ
+        private IWebElement driveThrough => driver.FindElement(By.CssSelector(".sc-jVBfSZ:nth-child(1) .sc-eCApnc"));
         private IWebElement meals => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
         private IWebElement deluxeCombo => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
         private IWebElement chooseSide => driver.FindElement(By.CssSelector(".sc-ksluID"));
@@ -33,21 +37,21 @@ namespace SeleniumPizza
         private IWebElement viewBag => driver.FindElement(By.CssSelector(".sc-biHcxt"));
         private IWebElement checkout => driver.FindElement(By.CssSelector(".bovdhG"));
         private IWebElement guest => driver.FindElement(By.CssSelector(".sc-fnVZcZ"));
-        private IWebElement firstName => driver.FindElement(By.Id("input-20"));
-        private IWebElement lastName => driver.FindElement(By.CssSelector("#input-21"));
-        private IWebElement phone => driver.FindElement(By.CssSelector("#input-22"));
-        private IWebElement email => driver.FindElement(By.CssSelector("#input-23"));
-        private IWebElement emailConfirmed => driver.FindElement(By.CssSelector("#input-24"));
+        private IWebElement firstName => driver.FindElement(By.Name("firstName"));
+        private IWebElement lastName => driver.FindElement(By.Name("lastName"));
+        private IWebElement phone => driver.FindElement(By.Name("phone"));
+        private IWebElement email => driver.FindElement(By.Name("email"));
+        private IWebElement emailConfirmed => driver.FindElement(By.Name("confirmEmail"));
 
 
+
+        //method that calls the different elements and creates a script to order chicken.
         public void OrderChicken()
         {
             var personal = new PersonalInfo("personalinfo.txt");
 
             
-            driver.Manage().Window.Maximize();
-
-            driver.Navigate().GoToUrl("https://www.chick-fil-a.com/");
+            
 
             Thread.Sleep(2000);
 
@@ -78,7 +82,8 @@ namespace SeleniumPizza
             Thread.Sleep(3000);
 
             
-            carryOut.Click();
+            //carryOut.Click();
+            driveThrough.Click();
             Thread.Sleep(3000);
 
             
@@ -155,8 +160,6 @@ namespace SeleniumPizza
             emailConfirmed.Click();
             emailConfirmed.SendKeys(personal.Email);
             Thread.Sleep(3000);
-
-
 
             driver.Quit();
 
