@@ -43,6 +43,8 @@ namespace SeleniumPizza
         private IWebElement emailConfirmed => driver.FindElement(By.Name("confirmEmail"));
         private IWebElement payment => driver.FindElement(By.CssSelector(".sc-ksluID"));
         private IWebElement SignIn => driver.FindElement(By.CssSelector(".sc-iwajpm > .bovdhG"));
+        private IWebElement userName => driver.FindElement(By.Name("pf.username"));
+        private IWebElement passPhrase => driver.FindElement(By.Name("pf.ok"));
 
 
 
@@ -168,6 +170,11 @@ namespace SeleniumPizza
             SignIn.Click();
             Thread.Sleep(3000);
 
+            userName.Click();
+            userName.SendKeys(personal.Email);
+
+            passPhrase.Click();
+            passPhrase.SendKeys(personal.passPhrase);
 
             driver.Quit();
 
