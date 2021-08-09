@@ -24,7 +24,6 @@ namespace SeleniumPizza
         private IWebElement FindLocation => driver.FindElement(By.CssSelector(".sc-ksluID"));
         private IWebElement ChooseLocation => driver.FindElement(By.CssSelector("li:nth-child(3) .sc-ksluID > span"));
         private IWebElement carryOut => driver.FindElement(By.CssSelector(".sc-jVBfSZ:nth-child(2) .sc-jrsJWt:nth-child(2)"));
-        //drive through .sc-fzJAIQ
         private IWebElement driveThrough => driver.FindElement(By.CssSelector(".sc-jVBfSZ:nth-child(1) .sc-eCApnc"));
         private IWebElement meals => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
         private IWebElement deluxeCombo => driver.FindElement(By.CssSelector("li:nth-child(2) .sc-uOECg"));
@@ -42,6 +41,8 @@ namespace SeleniumPizza
         private IWebElement phone => driver.FindElement(By.Name("phone"));
         private IWebElement email => driver.FindElement(By.Name("email"));
         private IWebElement emailConfirmed => driver.FindElement(By.Name("confirmEmail"));
+        private IWebElement payment => driver.FindElement(By.CssSelector(".sc-ksluID"));
+        private IWebElement SignIn => driver.FindElement(By.CssSelector(".sc-iwajpm > .bovdhG"));
 
 
 
@@ -160,6 +161,13 @@ namespace SeleniumPizza
             emailConfirmed.Click();
             emailConfirmed.SendKeys(personal.Email);
             Thread.Sleep(3000);
+
+            payment.Click();
+            Thread.Sleep(3000);
+
+            SignIn.Click();
+            Thread.Sleep(3000);
+
 
             driver.Quit();
 
